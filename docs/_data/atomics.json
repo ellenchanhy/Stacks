@@ -8,17 +8,20 @@
     {
       "class": "bs-sm",
       "output": "box-shadow: 0 @su2 @su8 fade(@black-700, 10%);",
-      "hover": true
+      "hover": true,
+      "responsive": true
     },
     {
       "class": "bs-md",
       "output": "box-shadow: 0 @su4 @su8 fade(@black-700, 20%);",
-      "hover": true
+      "hover": true,
+      "responsive": true
     },
     {
       "class": "bs-lg",
       "output": "box-shadow: 0 @su4 @su12 fade(@black-800, 20%);",
-      "hover": true
+      "hover": true,
+      "responsive": true
     },
     {
       "class": "bs-ring",
