@@ -26,6 +26,13 @@
 //  ----------------------------------------------------------------------------
 @input-padding: 0.6em 0.7em;
 
+@test-input: {
+    height: @su32;
+    line-height: unset;
+    padding-top: unset;
+    padding-bottom: unset;
+}
+
 @autofill: {
     &::-webkit-contacts-auto-fill-button {
         background-color: var(--black); // In Safari, make the autocomplete button darkmode-aware
@@ -98,6 +105,10 @@
 .s-input.s-input__search,
 .s-input.s-input__creditcard {
     padding-left: @su32;
+}
+
+.s-input.test {
+    @test-input();
 }
 
 
@@ -291,8 +302,7 @@ fieldset {
     }
 
     > select.test {
-        padding-top: 0.45em;
-        line-height: @lh-md;
+        @test-input();
     }
 }
 
