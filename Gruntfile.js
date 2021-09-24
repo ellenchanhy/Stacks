@@ -87,7 +87,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                     'dist/js/stacks.js': [
-                        'node_modules/stimulus/dist/stimulus.umd.js',
+                        'node_modules/@hotwired/stimulus/dist/stimulus.umd.js',
                         'node_modules/@popperjs/core/dist/umd/popper.js',
                         'build/lib/ts/stacks.js',
                         'build/lib/ts/controllers/**/*.js',

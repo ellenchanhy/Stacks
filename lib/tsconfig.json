@@ -2,10 +2,11 @@
     "compilerOptions": {
         "strict": true,
         "typeRoots": ["../node_modules/@types", "../node_modules/@stimulus/core/src"],
-        "target": "es5",
+        "target": "es6",
         "lib": ["dom", "es6", "dom.iterable", "scripthost"], // es6 stuff is polyfilled by stimulus
         "outDir": "../build",
-        "rootDir": "."
+        "rootDir": ".",
+        "moduleResolution": "node"
     },
     "include": ["./ts/**/*.ts"]
 }
