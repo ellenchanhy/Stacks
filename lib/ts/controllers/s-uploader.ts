@@ -12,8 +12,8 @@ export class UploaderController extends Stacks.StacksController {
     private previewsTarget!: HTMLElement;
     private uploaderTarget!: HTMLElement;
 
-    private boundDragEnter!: any;
-    private boundDragLeave!: any;
+    private boundDragEnter!: (e: MouseEvent) => void;
+    private boundDragLeave!: (e: MouseEvent) => void;
 
     private static readonly FILE_DISPLAY_LIMIT = 10;
     private static readonly MAX_FILE_SIZE = 1024 * 1024 * 10; // 10 MB
@@ -44,7 +44,7 @@ export class UploaderController extends Stacks.StacksController {
         }
 
         const count = this.inputTarget.files.length;
-        this.getDataURLs(
+        return this.getDataURLs(
             this.inputTarget.files,
             UploaderController.FILE_DISPLAY_LIMIT
         ).then((res: FilePreview[]) => {

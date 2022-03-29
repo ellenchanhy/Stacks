@@ -9,8 +9,7 @@ export class TableController extends Stacks.StacksController {
         if (["asc", "desc", "none"].indexOf(direction) < 0) {
             throw "direction must be one of asc, desc, or none";
         }
-        const controller = this;
-        this.columnTargets.forEach(function (target) {
+        this.columnTargets.forEach((target) => {
             const isCurrrent = target === headElem;
 
             target.classList.toggle(
@@ -31,15 +30,14 @@ export class TableController extends Stacks.StacksController {
                 });
 
             if (!isCurrrent || direction === "none") {
-                controller.removeElementData(target, "sort-direction");
+                this.removeElementData(target, "sort-direction");
             } else {
-                controller.setElementData(target, "sort-direction", direction);
+                this.setElementData(target, "sort-direction", direction);
             }
         });
     }
 
     sort(evt: Event) {
-        const controller = this;
         const colHead = evt.currentTarget;
         if (!(colHead instanceof HTMLTableCellElement)) {
             throw "invalid event target";
@@ -73,8 +71,8 @@ export class TableController extends Stacks.StacksController {
         // data will be a list of tuples [value, rowNum], where value is what we're sorting by
         const data: [string | number, number][] = [];
         let firstBottomRow: HTMLTableRowElement;
-        rows.forEach(function (row, index) {
-            const force = controller.getElementData(row, "sort-to");
+        rows.forEach((row, index) => {
+            const force = this.getElementData(row, "sort-to");
             if (force === "top") {
                 return; // rows not added to the list will automatically end up at the top
             } else if (force === "bottom") {
@@ -91,13 +89,13 @@ export class TableController extends Stacks.StacksController {
 
             // unless the to-be-sorted-by value is explicitly provided on the element via this attribute,
             // the value we're using is the cell's text, trimmed of any whitespace
-            const explicit = controller.getElementData(cell, "sort-val");
+            const explicit = this.getElementData(cell, "sort-val");
             const d =
                 typeof explicit === "string"
                     ? explicit
-                    : cell.textContent!.trim();
+                    : cell.textContent?.trim() || "";
 
-            if (d !== "" && parseInt(d, 10) + "" !== d) {
+            if (d !== "" && parseInt(d, 10).toString() !== d) {
                 anyNonInt = true;
             }
             data.push([d, index]);
@@ -133,7 +131,7 @@ export class TableController extends Stacks.StacksController {
         // this is the actual reordering of the table rows
         data.forEach(function (tup) {
             const row = rows[tup[1]];
-            row.parentElement!.removeChild(row);
+            row.parentElement?.removeChild(row);
             if (firstBottomRow) {
                 tbody.insertBefore(row, firstBottomRow);
             } else {
@@ -196,7 +194,7 @@ function buildIndexOrGetCellSlot(
     findCell?: HTMLTableCellElement
 ) {
     const index = [];
-    let curRow = section.children[0];
+    let curRow: Element | null = section.children[0];
 
     // the elements of these two arrays are synchronized; the first array contains table cell elements,
     // the second one contains a number that indicates for how many more rows this elements will
@@ -252,7 +250,7 @@ function buildIndexOrGetCellSlot(
             curSlot++;
         }
         if (curRow) {
-            curRow = curRow.nextElementSibling!;
+            curRow = curRow.nextElementSibling;
         }
     }
     return findCell

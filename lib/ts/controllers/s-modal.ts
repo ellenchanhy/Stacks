@@ -6,12 +6,12 @@ export class ModalController extends Stacks.StacksController {
     private modalTarget!: HTMLElement;
     private initialFocusTargets!: HTMLElement[];
 
-    private _boundClickFn!: any;
-    private _boundKeypressFn!: any;
+    private _boundClickFn!: (e: Event) => void;
+    private _boundKeypressFn!: (e: Event) => void;
 
     private returnElement!: HTMLElement;
 
-    private _boundTabTrap!: any;
+    private _boundTabTrap!: (e: Event) => void;
 
     connect() {
         this.validate();
@@ -118,7 +118,7 @@ export class ModalController extends Stacks.StacksController {
 
         // check for transitionend support
         const supportsTransitionEnd =
-            (this.modalTarget).ontransitionend !== undefined;
+            this.modalTarget.ontransitionend !== undefined;
 
         // shown/hidden events trigger after toggling the class
         if (supportsTransitionEnd) {
@@ -306,8 +306,8 @@ export class ModalController extends Stacks.StacksController {
         // note: .contains also returns true if the node itself matches the target element
         if (
             !this.modalTarget
-                .querySelector(".s-modal--dialog")!
-                .contains(target) &&
+                .querySelector(".s-modal--dialog")
+                ?.contains(target) &&
             document.body.contains(target)
         ) {
             this._toggle(false, e);

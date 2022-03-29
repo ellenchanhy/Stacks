@@ -1,4 +1,4 @@
-import { createPopper, Placement } from "@popperjs/core";
+import { createPopper, Instance, Placement } from "@popperjs/core";
 import * as Stacks from "../stacks";
 
 type OutsideClickBehavior =
@@ -8,8 +8,7 @@ type OutsideClickBehavior =
     | "after-dismissal";
 
 export abstract class BasePopoverController extends Stacks.StacksController {
-    // @ts-ignore
-    private popper!: Popper;
+    private popper!: Instance | null;
 
     protected popoverElement!: HTMLElement;
 
@@ -108,7 +107,7 @@ export abstract class BasePopoverController extends Stacks.StacksController {
         this.hide();
         if (this.popper) {
             this.popper.destroy();
-            delete this.popper;
+            this.popper = null;
         }
         super.disconnect();
     }
@@ -173,7 +172,7 @@ export abstract class BasePopoverController extends Stacks.StacksController {
         if (this.popper) {
             // completely destroy the popper on hide; this is in line with Popper.js's performance recommendations
             this.popper.destroy();
-            delete this.popper;
+            this.popper = null;
         }
 
         // on first interaction, hide-on-outside-click with value "after-dismissal" reverts to the default behavior
@@ -218,7 +217,6 @@ export abstract class BasePopoverController extends Stacks.StacksController {
      * Initializes the Popper for this instance
      */
     private initializePopper() {
-        // @ts-ignore
         this.popper = createPopper(this.referenceElement, this.popoverElement, {
             placement: (this.data.get("placement") as Placement) || "bottom",
             modifiers: [
@@ -307,7 +305,7 @@ export abstract class BasePopoverController extends Stacks.StacksController {
      */
     protected scheduleUpdate() {
         if (this.popper && this.isVisible) {
-            this.popper.update();
+            void this.popper.update();
         }
     }
 }
@@ -317,8 +315,8 @@ export class PopoverController extends BasePopoverController {
 
     protected popoverSelectorAttribute = "aria-controls";
 
-    private boundHideOnOutsideClick!: any;
-    private boundHideOnEscapePress!: any;
+    private boundHideOnOutsideClick!: (e: MouseEvent) => void;
+    private boundHideOnEscapePress!: (e: KeyboardEvent) => void;
 
     /**
      * Toggles optional classes in addition to BasePopoverController.shown
@@ -404,8 +402,8 @@ export class PopoverController extends BasePopoverController {
         }
         const cl = this.referenceElement.classList;
         this.data
-            .get("toggle-class")!
-            .split(/\s+/)
+            .get("toggle-class")
+            ?.split(/\s+/)
             .forEach(function (cls: string) {
                 cl.toggle(cls, show);
             });
@@ -489,6 +487,7 @@ export function attachPopover(
     }
 
     if (typeof popover === "string") {
+        // eslint-disable-next-line no-unsanitized/method
         const elements = document
             .createRange()
             .createContextualFragment(popover).children;
@@ -614,7 +613,9 @@ function toggleController(
     controllerName: string,
     include: boolean
 ) {
-    const controllers = new Set(el.getAttribute("data-controller")?.split(/\s+/));
+    const controllers = new Set(
+        el.getAttribute("data-controller")?.split(/\s+/)
+    );
     if (include) {
         controllers.add(controllerName);
     } else {

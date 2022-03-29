@@ -10,10 +10,10 @@ export class TooltipController extends BasePopoverController {
 
     protected popoverSelectorAttribute = "aria-describedby";
 
-    private boundScheduleShow!: any;
-    private boundHide!: any;
-    private boundHideIfWithin!: any;
-    private activeTimeout!: any;
+    private boundScheduleShow!: (event: Event) => void;
+    private boundHide!: (event: Event) => void;
+    private boundHideIfWithin!: (event: Event) => void;
+    private activeTimeout!: number | undefined;
 
     /**
      * Binds mouseover and mouseout events in addition to BasePopoverController.connect
@@ -73,7 +73,7 @@ export class TooltipController extends BasePopoverController {
      */
     hide(dispatcher: Event | Element | null = null) {
         window.clearTimeout(this.activeTimeout);
-        this.activeTimeout = null;
+        this.activeTimeout = undefined;
 
         super.hide(dispatcher);
     }
@@ -86,6 +86,7 @@ export class TooltipController extends BasePopoverController {
 
         const htmlTitle = this.data.get("html-title");
         if (htmlTitle) {
+            // eslint-disable-next-line no-unsanitized/method
             content = document
                 .createRange()
                 .createContextualFragment(htmlTitle);
@@ -176,7 +177,7 @@ export class TooltipController extends BasePopoverController {
      * @param event An event object from s-popover:shown
      */
     private hideIfWithin(event: Event) {
-        if ((<Element>event.target!).contains(this.referenceElement)) {
+        if ((<Element>event.target).contains(this.referenceElement)) {
             this.hide();
         }
     }
@@ -280,9 +281,7 @@ function applyOptionsAndTitleAttributes(
     if (controller) {
         controller.applyTitleAttributes();
     } else {
-        element.setAttribute(
-            "data-controller",
-            element.getAttribute("data-controller") + " s-tooltip"
-        );
+        const attr = element.getAttribute("data-controller") || "";
+        element.setAttribute("data-controller", attr + " s-tooltip");
     }
 }

@@ -29,7 +29,7 @@ export class StacksApplication extends Stimulus.Application {
         schema?: Stimulus.Schema
     ): StacksApplication {
         const application = new StacksApplication(element, schema);
-        application.start();
+        void application.start();
         return application;
     }
 
@@ -56,18 +56,11 @@ export class StacksController extends Stimulus.Controller {
         optionalElement?: Element
     ) {
         const namespacedName = this.identifier + ":" + eventName;
-        let event: CustomEvent<T>;
-        try {
-            event = new CustomEvent(namespacedName, {
-                bubbles: true,
-                cancelable: true,
-                detail: detail,
-            });
-        } catch (ex) {
-            // Internet Explorer
-            event = document.createEvent("CustomEvent");
-            event.initCustomEvent(namespacedName, true, true, detail);
-        }
+        const event: CustomEvent<T> = new CustomEvent(namespacedName, {
+            bubbles: true,
+            cancelable: true,
+            detail: detail,
+        });
         (optionalElement || this.element).dispatchEvent(event);
         return event;
     }
@@ -76,23 +69,26 @@ export class StacksController extends Stimulus.Controller {
 // ControllerDefinition/createController/addController is here to make
 // it easier to consume Stimulus from ES5 files (without classes)
 export interface ControllerDefinition {
-    [name: string]: any;
+    [name: string]: unknown;
     targets?: string[];
 }
 export function createController(
     controllerDefinition: ControllerDefinition
 ): typeof StacksController {
-    const Controller = controllerDefinition.hasOwnProperty("targets")
-        ? class Controller extends StacksController {
-              static targets = controllerDefinition.targets!;
-          }
-        : class Controller extends StacksController {};
+    const Controller =
+        "targets" in controllerDefinition
+            ? class Controller extends StacksController {
+                  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                  static targets = controllerDefinition.targets!;
+              }
+            : class Controller extends StacksController {};
 
     for (const prop in controllerDefinition) {
-        if (prop !== "targets" && controllerDefinition.hasOwnProperty(prop)) {
+        if (prop !== "targets" && prop in controllerDefinition) {
             Object.defineProperty(
                 Controller.prototype,
                 prop,
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
                 Object.getOwnPropertyDescriptor(controllerDefinition, prop)!
             );
         }

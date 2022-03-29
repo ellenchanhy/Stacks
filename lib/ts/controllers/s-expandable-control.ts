@@ -72,12 +72,12 @@ export class ExpandableController extends Stacks.StacksController {
                 (<HTMLInputElement>this.element).type
             ) >= 0
         ) {
-            this.isCollapsed = this._isCollapsedForCheckable;
+            this.isCollapsed = this._isCollapsedForCheckable.bind(this);
             this.events = ["change", RADIO_OFF_EVENT];
             this.isCheckable = true;
             this.isRadio = (<HTMLInputElement>this.element).type === "radio";
         } else {
-            this.isCollapsed = this._isCollapsedForClickable;
+            this.isCollapsed = this._isCollapsedForClickable.bind(this);
             this.events = ["click", "keydown"];
         }
         this.listener = this.listener.bind(this);
@@ -183,7 +183,7 @@ export class ExpandableController extends Stacks.StacksController {
 
     connect() {
         this.events.forEach((e) => {
-            this.element.addEventListener(e, this.listener);
+            this.element.addEventListener(e, this.listener.bind(this));
         }, this);
 
         if (this.isRadio) {
@@ -208,7 +208,8 @@ export class ExpandableController extends Stacks.StacksController {
                             expected
                     )
                 ) {
-                    for (const controlledElement of this.controlledCollapsibles) {
+                    for (const controlledElement of this
+                        .controlledCollapsibles) {
                         controlledElement.classList.toggle(
                             "is-expanded",
                             expected
@@ -223,7 +224,7 @@ export class ExpandableController extends Stacks.StacksController {
 
     disconnect() {
         this.events.forEach((e) => {
-            this.element.removeEventListener(e, this.listener);
+            this.element.removeEventListener(e, this.listener.bind(this));
         }, this);
 
         if (this.isRadio) {
