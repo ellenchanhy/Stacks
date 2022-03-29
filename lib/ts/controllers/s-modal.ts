@@ -50,7 +50,7 @@ export class ModalController extends Stacks.StacksController {
      */
     private validate() {
         // check for returnElement support
-        var returnElementSelector = this.data.get("return-element");
+        const returnElementSelector = this.data.get("return-element");
         if (returnElementSelector) {
             this.returnElement = <HTMLElement>(
                 document.querySelector(returnElementSelector)
@@ -73,8 +73,8 @@ export class ModalController extends Stacks.StacksController {
         show?: boolean | undefined,
         dispatcher: Event | Element | null = null
     ) {
-        var toShow = show;
-        var isVisible =
+        let toShow = show;
+        const isVisible =
             this.modalTarget.getAttribute("aria-hidden") === "false";
 
         // if we're letting the class toggle, we need to figure out if the popover is visible manually
@@ -87,10 +87,10 @@ export class ModalController extends Stacks.StacksController {
             return;
         }
 
-        let dispatchingElement = this.getDispatcher(dispatcher);
+        const dispatchingElement = this.getDispatcher(dispatcher);
 
         // show/hide events trigger before toggling the class
-        var triggeredEvent = this.triggerEvent(
+        const triggeredEvent = this.triggerEvent(
             toShow ? "show" : "hide",
             {
                 returnElement: this.returnElement,
@@ -117,8 +117,8 @@ export class ModalController extends Stacks.StacksController {
         }
 
         // check for transitionend support
-        var supportsTransitionEnd =
-            (<HTMLElement>this.modalTarget).ontransitionend !== undefined;
+        const supportsTransitionEnd =
+            (this.modalTarget).ontransitionend !== undefined;
 
         // shown/hidden events trigger after toggling the class
         if (supportsTransitionEnd) {
@@ -225,7 +225,7 @@ export class ModalController extends Stacks.StacksController {
         this.modalTarget.addEventListener(
             "s-modal:shown",
             () => {
-                var initialFocus =
+                const initialFocus =
                     this.firstVisible(this.initialFocusTargets) ??
                     this.firstVisible(this.getAllTabbables());
                 initialFocus?.focus();
@@ -240,7 +240,7 @@ export class ModalController extends Stacks.StacksController {
     private keepFocusWithinModal(e: KeyboardEvent) {
         // If somehow the user has tabbed out of the modal or if focus started outside the modal, push them to the first item.
         if (!this.modalTarget.contains(<Element>e.target)) {
-            var focusTarget = this.firstVisible(this.getAllTabbables());
+            const focusTarget = this.firstVisible(this.getAllTabbables());
             if (focusTarget) {
                 e.preventDefault();
                 focusTarget.focus();
@@ -251,10 +251,10 @@ export class ModalController extends Stacks.StacksController {
 
         // If we observe a tab keydown and we're on an edge, cycle the focus to the other side.
         if (e.key === "Tab") {
-            var tabbables = this.getAllTabbables();
+            const tabbables = this.getAllTabbables();
 
-            var firstTabbable = this.firstVisible(tabbables);
-            var lastTabbable = this.lastVisible(tabbables);
+            const firstTabbable = this.firstVisible(tabbables);
+            const lastTabbable = this.lastVisible(tabbables);
 
             if (firstTabbable && lastTabbable) {
                 if (firstTabbable === lastTabbable) {
@@ -301,7 +301,7 @@ export class ModalController extends Stacks.StacksController {
      * Forces the popover to hide if a user clicks outside of it or its reference element
      */
     private hideOnOutsideClick(e: Event) {
-        var target = <Node>e.target;
+        const target = <Node>e.target;
         // check if the document was clicked inside either the toggle element or the modal itself
         // note: .contains also returns true if the node itself matches the target element
         if (
@@ -366,7 +366,7 @@ export function hideModal(element: HTMLElement) {
  * @param show whether to force show/hide the modal; toggles the modal if left undefined
  */
 function toggleModal(element: HTMLElement, show?: boolean | undefined) {
-    var controller = Stacks.application.getControllerForElementAndIdentifier(
+    const controller = Stacks.application.getControllerForElementAndIdentifier(
         element,
         "s-modal"
     ) as ModalController;

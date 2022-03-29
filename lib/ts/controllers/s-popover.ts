@@ -128,7 +128,7 @@ export abstract class BasePopoverController extends Stacks.StacksController {
             return;
         }
 
-        let dispatcherElement = this.getDispatcher(dispatcher);
+        const dispatcherElement = this.getDispatcher(dispatcher);
 
         if (
             this.triggerEvent("show", {
@@ -142,7 +142,7 @@ export abstract class BasePopoverController extends Stacks.StacksController {
             this.initializePopper();
         }
 
-        this.popoverElement!.classList.add("is-visible");
+        this.popoverElement.classList.add("is-visible");
 
         // ensure the popper has been positioned correctly
         this.scheduleUpdate();
@@ -158,7 +158,7 @@ export abstract class BasePopoverController extends Stacks.StacksController {
             return;
         }
 
-        let dispatcherElement = this.getDispatcher(dispatcher);
+        const dispatcherElement = this.getDispatcher(dispatcher);
 
         if (
             this.triggerEvent("hide", {
@@ -242,7 +242,7 @@ export abstract class BasePopoverController extends Stacks.StacksController {
      * Validates the popover settings and attempts to set necessary internal variables
      */
     private validate() {
-        var referenceSelector = this.data.get("reference-selector");
+        const referenceSelector = this.data.get("reference-selector");
 
         this.referenceElement = <HTMLElement>this.element;
 
@@ -264,7 +264,7 @@ export abstract class BasePopoverController extends Stacks.StacksController {
             this.popoverSelectorAttribute
         );
 
-        var popoverElement = null;
+        let popoverElement = null;
 
         // if the popover is named, attempt to fetch it (and throw an error if it doesn't exist)
         if (popoverId) {
@@ -368,7 +368,7 @@ export class PopoverController extends BasePopoverController {
         if (
             this.shouldHideOnOutsideClick &&
             !this.referenceElement.contains(target) &&
-            !this.popoverElement!.contains(target) &&
+            !this.popoverElement.contains(target) &&
             document.body.contains(target)
         ) {
             this.hide(e);
@@ -387,7 +387,7 @@ export class PopoverController extends BasePopoverController {
 
         // check if the target was inside the popover element and refocus the triggering element
         // note: .contains also returns true if the node itself matches the target element
-        if (this.popoverElement!.contains(<Node>e.target)) {
+        if (this.popoverElement.contains(<Node>e.target)) {
             this.referenceElement.focus();
         }
 
@@ -402,7 +402,7 @@ export class PopoverController extends BasePopoverController {
         if (!this.data.has("toggle-class")) {
             return;
         }
-        var cl = this.referenceElement.classList;
+        const cl = this.referenceElement.classList;
         this.data
             .get("toggle-class")!
             .split(/\s+/)
@@ -499,7 +499,7 @@ export function attachPopover(
     }
 
     const existingId = referenceElement.getAttribute("aria-controls");
-    var popoverId = popover.id;
+    let popoverId = popover.id;
 
     if (!popover.classList.contains("s-popover")) {
         throw `popover should have the "s-popover" class but had class="${popover.className}"`;
@@ -614,7 +614,7 @@ function toggleController(
     controllerName: string,
     include: boolean
 ) {
-    var controllers = new Set(el.getAttribute("data-controller")?.split(/\s+/));
+    const controllers = new Set(el.getAttribute("data-controller")?.split(/\s+/));
     if (include) {
         controllers.add(controllerName);
     } else {

@@ -43,7 +43,7 @@ export class TooltipController extends BasePopoverController {
      */
     show(dispatcher: Event | Element | null = null) {
         // check and see if this controller coexists with a popover
-        var controller =
+        const controller =
             Stacks.application.getControllerForElementAndIdentifier(
                 this.element,
                 "s-popover"
@@ -82,15 +82,15 @@ export class TooltipController extends BasePopoverController {
      * Applies data-s-tooltip-html-title and title attributes.
      */
     applyTitleAttributes() {
-        var content: Node;
+        let content: Node;
 
-        var htmlTitle = this.data.get("html-title");
+        const htmlTitle = this.data.get("html-title");
         if (htmlTitle) {
             content = document
                 .createRange()
                 .createContextualFragment(htmlTitle);
         } else {
-            var plainTitle = this.element.getAttribute("title");
+            const plainTitle = this.element.getAttribute("title");
             if (plainTitle) {
                 content = document.createTextNode(plainTitle);
             } else {
@@ -101,13 +101,13 @@ export class TooltipController extends BasePopoverController {
         this.data.delete("html-title");
         this.element.removeAttribute("title");
 
-        var popoverId = this.element.getAttribute("aria-describedby");
+        let popoverId = this.element.getAttribute("aria-describedby");
         if (!popoverId) {
             popoverId = TooltipController.generateId();
             this.element.setAttribute("aria-describedby", popoverId);
         }
 
-        var popover = document.getElementById(popoverId);
+        let popover = document.getElementById(popoverId);
         if (!popover) {
             popover = document.createElement("div");
             popover.id = popoverId;
@@ -115,7 +115,7 @@ export class TooltipController extends BasePopoverController {
             popover.setAttribute("aria-hidden", "true");
             popover.setAttribute("role", "tooltip");
 
-            var parentNode = this.element.parentNode;
+            const parentNode = this.element.parentNode;
             if (parentNode) {
                 // insertBefore inserts at end if element.nextSibling is null.
                 parentNode.insertBefore(popover, this.element.nextSibling);
@@ -270,7 +270,7 @@ function applyOptionsAndTitleAttributes(
         element.setAttribute("data-s-tooltip-placement", options.placement);
     }
 
-    var controller = <TooltipController>(
+    const controller = <TooltipController>(
         Stacks.application.getControllerForElementAndIdentifier(
             element,
             "s-tooltip"

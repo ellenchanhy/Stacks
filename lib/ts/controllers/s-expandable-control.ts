@@ -25,7 +25,7 @@ function globalChangeListener(e: UIEvent) {
             if (other === e.target) {
                 return;
             }
-            var customEvent;
+            let customEvent;
             try {
                 customEvent = new Event(RADIO_OFF_EVENT);
             } catch (ex) {
@@ -37,7 +37,7 @@ function globalChangeListener(e: UIEvent) {
         });
 }
 
-var refCount = 0;
+let refCount = 0;
 function globalChangeListenerRequired(required: boolean) {
     if (required) {
         refCount++;
@@ -63,7 +63,7 @@ export class ExpandableController extends Stacks.StacksController {
     private events!: string[];
     private isCheckable!: boolean;
     private isRadio!: boolean;
-    private lastKeydownClickTimestamp: number = 0;
+    private lastKeydownClickTimestamp = 0;
 
     initialize() {
         if (
@@ -86,7 +86,7 @@ export class ExpandableController extends Stacks.StacksController {
     // for non-checkable elements, the initial source of truth is the collapsed/expanded
     // state of the controlled element (unless the element doesn't exist)
     _isCollapsedForClickable() {
-        var cc = this.controlledCollapsibles;
+        const cc = this.controlledCollapsibles;
         // the element is considered collapsed if *any* target element is collapsed
         return cc.length > 0
             ? !cc.every((element) => element.classList.contains("is-expanded"))
@@ -121,8 +121,8 @@ export class ExpandableController extends Stacks.StacksController {
         if (!this.data.has("toggle-class")) {
             return;
         }
-        var cl = this.element.classList;
-        var toggleClass = this.data.get("toggle-class");
+        const cl = this.element.classList;
+        const toggleClass = this.data.get("toggle-class");
         if (!toggleClass) {
             throw "couldn't find toggle class";
         }
@@ -132,7 +132,7 @@ export class ExpandableController extends Stacks.StacksController {
     }
 
     listener(e: Event) {
-        var newCollapsed;
+        let newCollapsed;
         if (this.isCheckable) {
             newCollapsed = !(<HTMLInputElement>this.element).checked;
         } else {
@@ -174,7 +174,7 @@ export class ExpandableController extends Stacks.StacksController {
             "aria-expanded",
             newCollapsed ? "false" : "true"
         );
-        for (let controlledElement of this.controlledCollapsibles) {
+        for (const controlledElement of this.controlledCollapsibles) {
             controlledElement.classList.toggle("is-expanded", !newCollapsed);
         }
         this._dispatchShowHideEvent(!newCollapsed);
@@ -197,9 +197,9 @@ export class ExpandableController extends Stacks.StacksController {
             this.isCollapsed() ? "false" : "true"
         );
         if (this.isCheckable) {
-            var cc = this.controlledCollapsibles;
+            const cc = this.controlledCollapsibles;
             if (cc.length) {
-                var expected = !this.isCollapsed();
+                const expected = !this.isCollapsed();
                 // if any element does not match the expected state, set them all to the expected state
                 if (
                     cc.some(
@@ -208,7 +208,7 @@ export class ExpandableController extends Stacks.StacksController {
                             expected
                     )
                 ) {
-                    for (let controlledElement of this.controlledCollapsibles) {
+                    for (const controlledElement of this.controlledCollapsibles) {
                         controlledElement.classList.toggle(
                             "is-expanded",
                             expected

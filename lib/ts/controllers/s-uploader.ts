@@ -52,7 +52,7 @@ export class UploaderController extends Stacks.StacksController {
             const hasMultipleFiles = res.length > 1;
 
             if (hasMultipleFiles) {
-                let headingElement = document.createElement("div");
+                const headingElement = document.createElement("div");
                 headingElement.classList.add("s-uploader--previews-heading");
                 headingElement.innerText =
                     res.length < count
@@ -114,7 +114,7 @@ export class UploaderController extends Stacks.StacksController {
             return;
         }
 
-        let previewElement = document.createElement("div");
+        const previewElement = document.createElement("div");
         let thumbElement;
 
         if (file.type.match("image/*") && file.data) {
@@ -147,7 +147,7 @@ export class UploaderController extends Stacks.StacksController {
      * @returns an object containing a FilePreview object
      */
     private fileToDataURL(file: File): Promise<FilePreview> {
-        var reader = new FileReader();
+        const reader = new FileReader();
         const { name, size, type } = file;
 
         if (
