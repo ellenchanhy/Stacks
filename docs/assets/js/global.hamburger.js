@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
     var navigation = $(".js-navigation");
     var hamburgerBtn = $(".js-hamburger-btn");
 
-    hamburgerBtn.on("click", function(e) {
+    hamburgerBtn.on("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
 

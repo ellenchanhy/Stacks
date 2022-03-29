@@ -1,21 +1,21 @@
-var feedbackForms = document.querySelectorAll('.js-feedback-form');
-var feedbackToast = document.querySelector('.js-feedback-toast');
+var feedbackForms = document.querySelectorAll(".js-feedback-form");
+var feedbackToast = document.querySelector(".js-feedback-toast");
 
 for (var form of feedbackForms) {
-    form.addEventListener('submit', handleFeedback)
+    form.addEventListener("submit", handleFeedback);
 }
 
 function handleFeedback(evt) {
     evt.preventDefault();
 
     var formData = new FormData(evt.target);
-    fetch('/', {
-        method: 'POST',
+    fetch("/", {
+        method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData).toString()
+        body: new URLSearchParams(formData).toString(),
     })
-    .then(() => openToast())
-    .catch((error) => alert(error))
+        .then(() => openToast())
+        .catch((error) => alert(error));
 }
 
 function openToast() {

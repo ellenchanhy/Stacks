@@ -25,9 +25,7 @@ const baseConfig = (isProd, minify) => ({
             {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
-                use: [
-                    "ts-loader",
-                ],
+                use: ["ts-loader"],
             },
             {
                 test: /\.less$/,
@@ -44,8 +42,8 @@ const baseConfig = (isProd, minify) => ({
                         loader: "postcss-loader",
                         options: {
                             postcssOptions: {
-                                plugins: minify ? [require('cssnano')] : [],
-                            }
+                                plugins: minify ? [require("cssnano")] : [],
+                            },
                         },
                     },
                     "less-loader",
@@ -59,7 +57,7 @@ const baseConfig = (isProd, minify) => ({
     plugins: [
         new MiniCssExtractPlugin({
             filename: `css/[name].css`,
-        })
+        }),
     ],
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
@@ -68,6 +66,6 @@ const baseConfig = (isProd, minify) => ({
 
 // build the bundle twice - once minified and once not
 module.exports = [
-    (_, argv) => baseConfig(isProd = argv.mode === "production", true),
-    (_, argv) => baseConfig(isProd = argv.mode === "production", false),
+    (_, argv) => baseConfig((isProd = argv.mode === "production"), true),
+    (_, argv) => baseConfig((isProd = argv.mode === "production"), false),
 ];

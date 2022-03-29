@@ -1,8 +1,8 @@
-var copyButtons = document.querySelectorAll('.js-clipboard');
-var copyNotice = document.querySelector('.js-clipboard-toast');
+var copyButtons = document.querySelectorAll(".js-clipboard");
+var copyNotice = document.querySelector(".js-clipboard-toast");
 
 for (var button of copyButtons) {
-    button.addEventListener('click', copyToClipboard)
+    button.addEventListener("click", copyToClipboard);
 }
 
 function copyToClipboard(evt) {
@@ -16,7 +16,7 @@ function copyToClipboard(evt) {
     selection.addRange(range);
 
     // Copy to clipboard
-    document.execCommand('copy');
+    document.execCommand("copy");
     selection.removeAllRanges();
 
     // Open a toaster

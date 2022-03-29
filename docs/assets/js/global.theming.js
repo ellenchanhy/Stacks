@@ -3,9 +3,13 @@ $(document).ready(function () {
     var themeCustomToggleSwitch = $("#toggle-theme-custom");
     var themeHighcontrastToggleSwitch = $("#toggle-theme-highcontrast");
     var body = $("body");
-    var browserPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var browserPrefersDark =
+        window.matchMedia &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches;
     var isCustom = body.hasClass("theme-custom");
-    var isDark = body.hasClass("theme-dark") || browserPrefersDark && body.hasClass("theme-system");
+    var isDark =
+        body.hasClass("theme-dark") ||
+        (browserPrefersDark && body.hasClass("theme-system"));
     var isHighcontrast = body.hasClass("theme-highcontrast");
 
     themeCustomToggleSwitch.prop("checked", isCustom);
@@ -17,7 +21,8 @@ $(document).ready(function () {
         e.stopPropagation();
 
         var isForcedDarkMode = body.hasClass("theme-dark");
-        var isUnforcedDarkMode = browserPrefersDark && body.hasClass("theme-system");
+        var isUnforcedDarkMode =
+            browserPrefersDark && body.hasClass("theme-system");
 
         if (browserPrefersDark) {
             body.toggleClass("theme-system", !isUnforcedDarkMode);
@@ -29,7 +34,10 @@ $(document).ready(function () {
 
         $(this).prop("checked", !(isUnforcedDarkMode || isForcedDarkMode));
 
-        localStorage.setItem("forceDarkModeOn", !(isUnforcedDarkMode || isForcedDarkMode));
+        localStorage.setItem(
+            "forceDarkModeOn",
+            !(isUnforcedDarkMode || isForcedDarkMode)
+        );
 
         return false;
     });

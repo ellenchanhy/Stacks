@@ -2,15 +2,15 @@
 // usually these are stripped out before they make it into the distributable, but I guess not this one...
 // @ts-expect-error
 global.process = {
-    env: {}
+    env: {},
 };
 const docsearch = require("docsearch.js");
 
-$(document).ready(function() {
+$(document).ready(function () {
     docsearch({
-        apiKey: '09d35fa9def5c025244d5b217778a652',
-        indexName: 'stackoverflow_design',
-        inputSelector: '#searchbox'
+        apiKey: "09d35fa9def5c025244d5b217778a652",
+        indexName: "stackoverflow_design",
+        inputSelector: "#searchbox",
     });
 
     // Show or hide search
@@ -19,7 +19,7 @@ $(document).ready(function() {
     var searchIcon = $(".js-search-icon");
     var searchBtn = $(".js-search-btn");
 
-    searchBtn.click(function(e) {
+    searchBtn.click(function (e) {
         e.preventDefault();
         e.stopPropagation();
 
@@ -27,7 +27,7 @@ $(document).ready(function() {
         searchCloseIcon.toggleClass("d-none");
         searchContainer.toggleClass("s-topbar--searchbar__open");
 
-        if (searchContainer.hasClass("s-topbar--searchbar__open") ) {
+        if (searchContainer.hasClass("s-topbar--searchbar__open")) {
             searchContainer.find("input").focus();
         }
     });

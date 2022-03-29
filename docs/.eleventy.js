@@ -7,34 +7,37 @@ const iconPlugin = require("./plugins/icons");
 const tipPlugin = require("./plugins/tip");
 const markdownPlugin = require("./plugins/markdown");
 
-module.exports = function(eleventyConfig) {
-  eleventyConfig.setQuietMode(true); // Reduce the console output
-  eleventyConfig.addLayoutAlias('home', 'layouts/home.html');
-  eleventyConfig.addLayoutAlias('page', 'layouts/page.html');
+module.exports = function (eleventyConfig) {
+    eleventyConfig.setQuietMode(true); // Reduce the console output
+    eleventyConfig.addLayoutAlias("home", "layouts/home.html");
+    eleventyConfig.addLayoutAlias("page", "layouts/page.html");
 
-  eleventyConfig.addPlugin(iconPlugin);
-  eleventyConfig.addPlugin(headerPlugin);
-  eleventyConfig.addPlugin(tipPlugin);
+    eleventyConfig.addPlugin(iconPlugin);
+    eleventyConfig.addPlugin(headerPlugin);
+    eleventyConfig.addPlugin(tipPlugin);
 
-  // Version shortcode
-  eleventyConfig.addLiquidShortcode("version", function() {
-    return {version}.version;
-  });
+    // Version shortcode
+    eleventyConfig.addLiquidShortcode("version", function () {
+        return { version }.version;
+    });
 
-  eleventyConfig.addPlugin(highlightPlugin);
+    eleventyConfig.addPlugin(highlightPlugin);
 
-  eleventyConfig.addPlugin(markdownPlugin);
+    eleventyConfig.addPlugin(markdownPlugin);
 
-  // Add submenu generation
-  eleventyConfig.addPlugin(pluginTOC, {tags: ['h2', 'h3'], wrapper: 'nav aria-label="Table of contents"'});
+    // Add submenu generation
+    eleventyConfig.addPlugin(pluginTOC, {
+        tags: ["h2", "h3"],
+        wrapper: 'nav aria-label="Table of contents"',
+    });
 
-  // Copy these files over to _site
-  eleventyConfig.addPassthroughCopy('assets/dist');
-  eleventyConfig.addPassthroughCopy('assets/img');
-  eleventyConfig.addPassthroughCopy('email/templates/code');
-  eleventyConfig.addPassthroughCopy('email/templates/examples');
+    // Copy these files over to _site
+    eleventyConfig.addPassthroughCopy("assets/dist");
+    eleventyConfig.addPassthroughCopy("assets/img");
+    eleventyConfig.addPassthroughCopy("email/templates/code");
+    eleventyConfig.addPassthroughCopy("email/templates/examples");
 
-  // Ignore liquid parsing on these files
-  eleventyConfig.ignores.add('email/templates/code');
-  eleventyConfig.ignores.add('email/templates/examples');
-}
+    // Ignore liquid parsing on these files
+    eleventyConfig.ignores.add("email/templates/code");
+    eleventyConfig.ignores.add("email/templates/examples");
+};
