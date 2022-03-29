@@ -1,7 +1,7 @@
 [
     {
-      "class": ".s-topbar",
-      "description": "Base class"
+        "class": ".s-topbar",
+        "description": "Base class"
     },
     {
         "class": ".s-topbar__light",

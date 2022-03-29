@@ -1,244 +1,244 @@
 {
-  "secondary": [
-    {
-      "title": "Secondary",
-      "classes": [
+    "secondary": [
         {
-          "title": "Clear"
-        },
-        {
-          "title": "Outlined",
-          "class": "s-btn__outlined"
-        },
-        {
-          "title": "Filled",
-          "class": "s-btn__filled"
+            "title": "Secondary",
+            "classes": [
+                {
+                    "title": "Clear"
+                },
+                {
+                    "title": "Outlined",
+                    "class": "s-btn__outlined"
+                },
+                {
+                    "title": "Filled",
+                    "class": "s-btn__filled"
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "primary": [
-    {
-      "title": "Primary",
-      "classes": [
+    ],
+    "primary": [
         {
-          "title": "Primary",
-          "class": "s-btn__primary"
+            "title": "Primary",
+            "classes": [
+                {
+                    "title": "Primary",
+                    "class": "s-btn__primary"
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "danger": [
-    {
-      "title": "Danger",
-      "class": "s-btn__danger",
-      "classes": [
+    ],
+    "danger": [
         {
-          "title": "Clear"
-        },
-        {
-          "title": "Outlined",
-          "class": "s-btn__outlined"
-        },
-        {
-          "title": "Filled",
-          "class": "s-btn__filled"
+            "title": "Danger",
+            "class": "s-btn__danger",
+            "classes": [
+                {
+                    "title": "Clear"
+                },
+                {
+                    "title": "Outlined",
+                    "class": "s-btn__outlined"
+                },
+                {
+                    "title": "Filled",
+                    "class": "s-btn__filled"
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "muted": [
-    {
-      "title": "Muted",
-      "class": "s-btn__muted",
-      "classes": [
+    ],
+    "muted": [
         {
-          "title": "Clear"
-        },
-        {
-          "title": "Outlined",
-          "class": "s-btn__outlined"
-        },
-        {
-          "title": "Filled",
-          "class": "s-btn__filled"
+            "title": "Muted",
+            "class": "s-btn__muted",
+            "classes": [
+                {
+                    "title": "Clear"
+                },
+                {
+                    "title": "Outlined",
+                    "class": "s-btn__outlined"
+                },
+                {
+                    "title": "Filled",
+                    "class": "s-btn__filled"
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "loading": [
-    {
-      "title": "Loaders",
-      "class": "is-loading",
-      "classes": [
+    ],
+    "loading": [
         {
-          "title": "Primary",
-          "class": "s-btn__primary"
-        },
-        {
-          "title": "Secondary, Clear"
-        },
-        {
-          "title": "Secondary, Outlined",
-          "class": "s-btn__outlined"
-        },
-        {
-          "title": "Secondary, Filled",
-          "class": "s-btn__filled"
-        },
-        {
-          "title": "Danger, Clear",
-          "class": "s-btn__danger"
-        },
-        {
-          "title": "Danger, Outlined",
-          "class": "s-btn__danger",
-          "class2": "s-btn__outlined"
-        },
-        {
-          "title": "Danger, Filled",
-          "class": "s-btn__danger",
-          "class2": "s-btn__filled"
-        },
-        {
-          "title": "Muted, Clear",
-          "class": "s-btn__muted"
-        },
-        {
-          "title": "Muted, Outlined",
-          "class": "s-btn__muted",
-          "class2": "s-btn__outlined"
-        },
-        {
-          "title": "Muted, Filled",
-          "class": "s-btn__muted",
-          "class2": "s-btn__filled"
+            "title": "Loaders",
+            "class": "is-loading",
+            "classes": [
+                {
+                    "title": "Primary",
+                    "class": "s-btn__primary"
+                },
+                {
+                    "title": "Secondary, Clear"
+                },
+                {
+                    "title": "Secondary, Outlined",
+                    "class": "s-btn__outlined"
+                },
+                {
+                    "title": "Secondary, Filled",
+                    "class": "s-btn__filled"
+                },
+                {
+                    "title": "Danger, Clear",
+                    "class": "s-btn__danger"
+                },
+                {
+                    "title": "Danger, Outlined",
+                    "class": "s-btn__danger",
+                    "class2": "s-btn__outlined"
+                },
+                {
+                    "title": "Danger, Filled",
+                    "class": "s-btn__danger",
+                    "class2": "s-btn__filled"
+                },
+                {
+                    "title": "Muted, Clear",
+                    "class": "s-btn__muted"
+                },
+                {
+                    "title": "Muted, Outlined",
+                    "class": "s-btn__muted",
+                    "class2": "s-btn__outlined"
+                },
+                {
+                    "title": "Muted, Filled",
+                    "class": "s-btn__muted",
+                    "class2": "s-btn__filled"
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "dropdown": [
-    {
-      "title": "Dropdown",
-      "class": "s-btn__dropdown",
-      "classes": [
+    ],
+    "dropdown": [
         {
-          "title": "Primary",
-          "class": "s-btn__primary"
-        },
-        {
-          "title": "Secondary, Clear"
-        },
-        {
-          "title": "Secondary, Outlined",
-          "class": "s-btn__outlined"
-        },
-        {
-          "title": "Secondary, Filled",
-          "class": "s-btn__filled"
-        },
-        {
-          "title": "Danger, Clear",
-          "class": "s-btn__danger"
-        },
-        {
-          "title": "Danger, Outlined",
-          "class": "s-btn__danger",
-          "class2": "s-btn__outlined"
-        },
-        {
-          "title": "Danger, Filled",
-          "class": "s-btn__danger",
-          "class2": "s-btn__filled"
-        },
-        {
-          "title": "Muted, Clear",
-          "class": "s-btn__muted"
-        },
-        {
-          "title": "Muted, Outlined",
-          "class": "s-btn__muted",
-          "class2": "s-btn__outlined"
-        },
-        {
-          "title": "Muted, Filled",
-          "class": "s-btn__muted",
-          "class2": "s-btn__filled"
+            "title": "Dropdown",
+            "class": "s-btn__dropdown",
+            "classes": [
+                {
+                    "title": "Primary",
+                    "class": "s-btn__primary"
+                },
+                {
+                    "title": "Secondary, Clear"
+                },
+                {
+                    "title": "Secondary, Outlined",
+                    "class": "s-btn__outlined"
+                },
+                {
+                    "title": "Secondary, Filled",
+                    "class": "s-btn__filled"
+                },
+                {
+                    "title": "Danger, Clear",
+                    "class": "s-btn__danger"
+                },
+                {
+                    "title": "Danger, Outlined",
+                    "class": "s-btn__danger",
+                    "class2": "s-btn__outlined"
+                },
+                {
+                    "title": "Danger, Filled",
+                    "class": "s-btn__danger",
+                    "class2": "s-btn__filled"
+                },
+                {
+                    "title": "Muted, Clear",
+                    "class": "s-btn__muted"
+                },
+                {
+                    "title": "Muted, Outlined",
+                    "class": "s-btn__muted",
+                    "class2": "s-btn__outlined"
+                },
+                {
+                    "title": "Muted, Filled",
+                    "class": "s-btn__muted",
+                    "class2": "s-btn__filled"
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "badges": [
-    {
-      "title": "Badge",
-      "class": "s-btn--badge",
-      "classes": [
+    ],
+    "badges": [
         {
-          "title": "Primary",
-          "class": "s-btn__primary"
-        },
-        {
-          "title": "Secondary, Clear"
-        },
-        {
-          "title": "Secondary, Outlined",
-          "class": "s-btn__outlined"
-        },
-        {
-          "title": "Secondary, Filled",
-          "class": "s-btn__filled"
-        },
-        {
-          "title": "Danger, Clear",
-          "class": "s-btn__danger"
-        },
-        {
-          "title": "Danger, Outlined",
-          "class": "s-btn__danger",
-          "class2": "s-btn__outlined"
-        },
-        {
-          "title": "Danger, Filled",
-          "class": "s-btn__danger",
-          "class2": "s-btn__filled"
-        },
-        {
-          "title": "Muted, Clear",
-          "class": "s-btn__muted"
-        },
-        {
-          "title": "Muted, Outlined",
-          "class": "s-btn__muted",
-          "class2": "s-btn__outlined"
-        },
-        {
-          "title": "Muted, Filled",
-          "class": "s-btn__muted",
-          "class2": "s-btn__filled"
+            "title": "Badge",
+            "class": "s-btn--badge",
+            "classes": [
+                {
+                    "title": "Primary",
+                    "class": "s-btn__primary"
+                },
+                {
+                    "title": "Secondary, Clear"
+                },
+                {
+                    "title": "Secondary, Outlined",
+                    "class": "s-btn__outlined"
+                },
+                {
+                    "title": "Secondary, Filled",
+                    "class": "s-btn__filled"
+                },
+                {
+                    "title": "Danger, Clear",
+                    "class": "s-btn__danger"
+                },
+                {
+                    "title": "Danger, Outlined",
+                    "class": "s-btn__danger",
+                    "class2": "s-btn__outlined"
+                },
+                {
+                    "title": "Danger, Filled",
+                    "class": "s-btn__danger",
+                    "class2": "s-btn__filled"
+                },
+                {
+                    "title": "Muted, Clear",
+                    "class": "s-btn__muted"
+                },
+                {
+                    "title": "Muted, Outlined",
+                    "class": "s-btn__muted",
+                    "class2": "s-btn__outlined"
+                },
+                {
+                    "title": "Muted, Filled",
+                    "class": "s-btn__muted",
+                    "class2": "s-btn__filled"
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "sizes": [
-    {
-      "size": "Extra Small",
-      "fs": "11px",
-      "class": "s-btn__xs"
-    },
-    {
-      "size": "Small",
-      "fs": "12px",
-      "class": "s-btn__sm"
-    },
-    {
-      "size": "Default",
-      "fs": "13px",
-      "class": "N/A"
-    },
-    {
-      "size": "Medium",
-      "fs": "17px",
-      "class": "s-btn__md"
-    }
-  ]
+    ],
+    "sizes": [
+        {
+            "size": "Extra Small",
+            "fs": "11px",
+            "class": "s-btn__xs"
+        },
+        {
+            "size": "Small",
+            "fs": "12px",
+            "class": "s-btn__sm"
+        },
+        {
+            "size": "Default",
+            "fs": "13px",
+            "class": "N/A"
+        },
+        {
+            "size": "Medium",
+            "fs": "17px",
+            "class": "s-btn__md"
+        }
+    ]
 }
