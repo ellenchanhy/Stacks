@@ -1,24 +1,24 @@
 {
-  "extends": "stylelint-config-recommended",
-  "customSyntax": "postcss-less",
-  "rules": {
-    "at-rule-no-unknown": null,
-    "function-no-unknown": null,
-    "indentation": 4,
-    "max-empty-lines": 2,
-    "no-invalid-double-slash-comments": null,
-    "rule-empty-line-before": null,
-    "at-rule-empty-line-before": null,
-    "declaration-empty-line-before": null,
-    "selector-pseudo-element-colon-notation": "single",
-    "no-descending-specificity": null,
-    "function-whitespace-after": null,
-    "no-invalid-position-at-import-rule": null,
-    "selector-disallowed-list": [
-      "/[.#]js-/",
-      {
-        "message": "js-* selectors can’t have visual styling. https://stackoverflow.design/product/guidelines/javascript/#javascript-classnames"
-      }
-    ]
-  }
+    "extends": "stylelint-config-recommended",
+    "customSyntax": "postcss-less",
+    "rules": {
+        "at-rule-no-unknown": null,
+        "function-no-unknown": null,
+        "indentation": 4,
+        "max-empty-lines": 2,
+        "no-invalid-double-slash-comments": null,
+        "rule-empty-line-before": null,
+        "at-rule-empty-line-before": null,
+        "declaration-empty-line-before": null,
+        "selector-pseudo-element-colon-notation": "single",
+        "no-descending-specificity": null,
+        "function-whitespace-after": null,
+        "no-invalid-position-at-import-rule": null,
+        "selector-disallowed-list": [
+            "/[.#]js-/",
+            {
+                "message": "js-* selectors can’t have visual styling. https://stackoverflow.design/product/guidelines/javascript/#javascript-classnames"
+            }
+        ]
+    }
 }
