@@ -28,7 +28,9 @@
 
 @autofill: {
     &::-webkit-contacts-auto-fill-button {
-        background-color: var(--black); // In Safari, make the autocomplete button darkmode-aware
+        background-color: var(
+            --black
+        ); // In Safari, make the autocomplete button darkmode-aware
     }
 
     &:-webkit-autofill {
@@ -40,10 +42,11 @@
         &:focus {
             border-color: var(--blue-300);
             // Since the box shadow is overwritten to show a background, we have to re-add the focus outline
-            -webkit-box-shadow: 0 0 0 1000px var(--blue-050) inset, 0 0 0 @su4 var(--focus-ring);
+            -webkit-box-shadow: 0 0 0 1000px var(--blue-050) inset,
+                0 0 0 @su4 var(--focus-ring);
         }
     }
-}
+};
 
 @basic-styling: {
     -webkit-appearance: none; // Removes shadows we don't want in mobile Safari
@@ -93,7 +96,7 @@
 
     // --  STYLE AUTOFILL STATES
     @autofill();
-}
+};
 
 //  ============================================================================
 //  $  BASE INPUT / TEXTAREA STYLE
@@ -107,7 +110,6 @@
 .s-input.s-input__creditcard {
     padding-left: @su32;
 }
-
 
 //  ============================================================================
 //  $  FIELDSET
@@ -198,7 +200,6 @@ fieldset {
     }
 }
 
-
 //  ============================================================================
 //  $  TEXT STYLES
 //  ============================================================================
@@ -248,7 +249,6 @@ fieldset {
         border-bottom-right-radius: @br-sm;
     }
 }
-
 
 //  ============================================================================
 //  $   SELECT MENUS
@@ -333,7 +333,6 @@ fieldset {
     }
 }
 
-
 //  ============================================================================
 //  $   CHECKBOXES & RADIOS
 //  ----------------------------------------------------------------------------
@@ -341,7 +340,10 @@ fieldset {
 .s-radio {
     //  [1]   Check to see if we can use custom styles, if so reset the defaults
     //  ------------------------------------------------------------------------
-    @supports ((-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none)) {
+    @supports (
+        (-webkit-appearance: none) or (-moz-appearance: none) or
+            (appearance: none)
+    ) {
         .appearance(none);
 
         &::-ms-check {
@@ -371,7 +373,10 @@ fieldset {
 //  $$  CHECKBOXES
 //  ----------------------------------------------------------------------------
 .s-checkbox {
-    @supports ((-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none)) {
+    @supports (
+        (-webkit-appearance: none) or (-moz-appearance: none) or
+            (appearance: none)
+    ) {
         border-radius: @br-sm;
         background-position: center center;
         background-repeat: no-repeat;
@@ -402,7 +407,10 @@ fieldset {
 //  $$  RADIOS
 //  ----------------------------------------------------------------------------
 .s-radio {
-    @supports ((-webkit-appearance: none) or (-moz-appearance: none) or (appearance: none)) {
+    @supports (
+        (-webkit-appearance: none) or (-moz-appearance: none) or
+            (appearance: none)
+    ) {
         border-radius: @br-circle;
 
         &:checked {
@@ -436,8 +444,8 @@ fieldset {
 
         .highcontrast-mode({
             border-color: var(--black);
-        })
-    }
+        });
+    };
 
     .s-input:focus,
     .s-input.has-focus,

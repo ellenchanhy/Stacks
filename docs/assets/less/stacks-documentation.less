@@ -54,19 +54,19 @@
         width: 537px;
         height: 390px;
     }
-}, @force-selector: true);
+}, @force-selector: true);;
 
 #stacks-internals #screen-md({
     .stacks-navigation-shadow {
         box-shadow: 3px 0 3px 0 hsla(0, 0, 0, 0.02), 7px 0 6px 0 hsla(0, 0, 0, 0.03), 13px 0 11px 0 hsla(0, 0, 0, 0.04), 22px 0 20px 0 hsla(0, 0, 0, 0.04), 42px 0 37px 0 hsla(0, 0, 0, 0.05);
     }
-}, @force-selector: true);
+}, @force-selector: true);;
 
 #stacks-internals #screen-sm({
     .stacks-navigation-shadow {
         box-shadow: none;
     }
-}, @force-selector: true);
+}, @force-selector: true);;
 
 #stacks-internals #screen-sm({
     .stacks-home-nav {
@@ -86,7 +86,7 @@
         height: 260px;
         bottom: 20%;
     }
-}, @force-selector: true);
+}, @force-selector: true);;
 
 @media (max-width: 320px) {
     html .stacks-home-nav {
@@ -144,14 +144,14 @@
     }
 }
 
-
 //  ============================================================================
 //  $   TYPE STYLES
 //  ============================================================================
 //  $$  TITLES
 //  ----------------------------------------------------------------------------
 .stacks-title {
-    text-shadow: 0 0 10px var(--theme-primary-400), 0 0 10px var(--theme-primary-400), 0 0 10px var(--theme-primary-400);
+    text-shadow: 0 0 10px var(--theme-primary-400),
+        0 0 10px var(--theme-primary-400), 0 0 10px var(--theme-primary-400);
     text-rendering: optimizeLegibility;
 }
 
@@ -215,7 +215,6 @@
     font-size: @fs-title;
 }
 
-
 //  --   Code Tag
 //  ----------------------------------------------------------------------------
 .stacks-code {
@@ -231,7 +230,6 @@
     white-space: normal;
 }
 
-
 //  ============================================================================
 //  $  LISTS
 //  ----------------------------------------------------------------------------
@@ -241,7 +239,6 @@
     line-height: @lh-lg;
     color: var(--fc-medium);
 }
-
 
 //  ============================================================================
 //  $   CODE STYLES
@@ -459,7 +456,7 @@
         border-radius: 40px;
         color: var(--highlight-bg);
     }
-});
+});;
 
 #stacks-internals #screen-md({
     .md\:highlight {
@@ -468,7 +465,7 @@
         border-radius: 40px;
         color: var(--highlight-bg);
     }
-});
+});;
 
 #stacks-internals #screen-sm({
     .sm\:highlight {
@@ -477,6 +474,6 @@
         border-radius: 40px;
         color: var(--highlight-bg);
     }
-});
+});;
 
 @import (inline) "~@stackoverflow/stacks-editor/dist/styles.css";

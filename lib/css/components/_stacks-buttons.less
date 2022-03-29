@@ -207,7 +207,9 @@
         }
 
         &:active {
-            background-color: var(--theme-button-filled-active-background-color);
+            background-color: var(
+                --theme-button-filled-active-background-color
+            );
             border-color: var(--theme-button-filled-active-border-color);
             box-shadow: none;
         }
@@ -220,7 +222,9 @@
 
         &.is-selected {
             color: var(--theme-button-filled-selected-color);
-            background-color: var(--theme-button-filled-selected-background-color);
+            background-color: var(
+                --theme-button-filled-selected-background-color
+            );
             border-color: var(--theme-button-filled-selected-border-color);
             box-shadow: none;
         }
@@ -457,11 +461,15 @@
         &:focus,
         &:active {
             color: var(--theme-button-primary-hover-color);
-            background-color: var(--theme-button-primary-hover-background-color);
+            background-color: var(
+                --theme-button-primary-hover-background-color
+            );
         }
 
         &:active {
-            background-color: var(--theme-button-primary-active-background-color);
+            background-color: var(
+                --theme-button-primary-active-background-color
+            );
             box-shadow: none;
         }
 
@@ -473,7 +481,9 @@
 
         &.is-selected {
             color: var(--theme-button-primary-selected-color);
-            background-color: var(--theme-button-primary-selected-background-color);
+            background-color: var(
+                --theme-button-primary-selected-background-color
+            );
         }
 
         .s-btn--number {
@@ -602,8 +612,8 @@
         //  ------------------------------------------------------------------------
         .svg-icon {
             vertical-align: baseline;
-            margin-top: -0.3em;         // [1]
-            margin-bottom: -0.3em;      // [1]
+            margin-top: -0.3em; // [1]
+            margin-bottom: -0.3em; // [1]
             transition: opacity 200ms @te-smooth; // Animate the transition to .is-loading
         }
     }
@@ -641,7 +651,8 @@
                 border-color: transparent;
                 border-left-color: currentColor;
                 border-radius: @br-circle;
-                animation: s-spinner-rotate 0.9s infinite cubic-bezier(0.5, 0.1, 0.5, 0.9);
+                animation: s-spinner-rotate 0.9s infinite
+                    cubic-bezier(0.5, 0.1, 0.5, 0.9);
                 // see _stacks-spinner.less for an explanation of the following two
                 filter: invert(0); // (*)
                 transform-origin: 50% 50% 1px; // (*)
