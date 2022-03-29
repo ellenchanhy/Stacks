@@ -1,9 +1,8 @@
 import * as Stacks from "../stacks";
 
 export class TabListController extends Stacks.StacksController {
-
     private boundSelectTab: any; // (event: MouseEvent) => void;
-    private boundHandleKeydown: any // (event: KeyboardEvent) => void;
+    private boundHandleKeydown: any; // (event: KeyboardEvent) => void;
 
     connect() {
         super.connect();
@@ -30,7 +29,9 @@ export class TabListController extends Stacks.StacksController {
      * Gets all tabs within the controller.
      */
     get tabTargets() {
-        return <HTMLElement[]>Array.from(this.element.querySelectorAll("[role=tab]"));
+        return <HTMLElement[]>(
+            Array.from(this.element.querySelectorAll("[role=tab]"))
+        );
     }
 
     /**
@@ -59,8 +60,12 @@ export class TabListController extends Stacks.StacksController {
         }
 
         // Use circular navigation when users go past the first or last tab.
-        if (tabIndex < 0) { tabIndex = tabs.length - 1; }
-        if (tabIndex >= tabs.length) { tabIndex = 0; }
+        if (tabIndex < 0) {
+            tabIndex = tabs.length - 1;
+        }
+        if (tabIndex >= tabs.length) {
+            tabIndex = 0;
+        }
 
         tabElement = <HTMLElement>tabs[tabIndex];
         this.switchToTab(tabElement);
@@ -74,23 +79,30 @@ export class TabListController extends Stacks.StacksController {
      * the s-navigation-tablist:select event is prevented.
      */
     private switchToTab(newTab: HTMLElement) {
-
         var oldTab = this.selectedTab;
-        if (oldTab === newTab) { return; }
+        if (oldTab === newTab) {
+            return;
+        }
 
-        if (this.triggerEvent("select", { oldTab, newTab }).defaultPrevented) { return; }
+        if (this.triggerEvent("select", { oldTab, newTab }).defaultPrevented) {
+            return;
+        }
 
         this.selectedTab = newTab;
         this.triggerEvent("selected", { oldTab, newTab });
     }
-    
+
     /**
      * Returns the currently selected tab or null if no tabs are selected.
      */
-    public get selectedTab() : HTMLElement | null {
-        return this.tabTargets.find(e => e.getAttribute("aria-selected") === "true") || null;
+    public get selectedTab(): HTMLElement | null {
+        return (
+            this.tabTargets.find(
+                (e) => e.getAttribute("aria-selected") === "true"
+            ) || null
+        );
     }
-    
+
     /**
      * Switches the tablist to the provided tab, updating the tabs and panels
      * to reflect the change.
@@ -99,19 +111,19 @@ export class TabListController extends Stacks.StacksController {
      */
     public set selectedTab(selectedTab: HTMLElement | null) {
         for (let tab of this.tabTargets) {
-            let panelId = tab.getAttribute('aria-controls');
+            let panelId = tab.getAttribute("aria-controls");
             let panel = panelId ? document.getElementById(panelId) : null;
 
             if (tab === selectedTab) {
-                tab.classList.add('is-selected');
-                tab.setAttribute('aria-selected', 'true');
-                tab.removeAttribute('tabindex');
-                panel?.classList.remove('d-none');
+                tab.classList.add("is-selected");
+                tab.setAttribute("aria-selected", "true");
+                tab.removeAttribute("tabindex");
+                panel?.classList.remove("d-none");
             } else {
-                tab.classList.remove('is-selected');
-                tab.setAttribute('aria-selected', 'false');
-                tab.setAttribute('tabindex', '-1');
-                panel?.classList.add('d-none');
+                tab.classList.remove("is-selected");
+                tab.setAttribute("aria-selected", "false");
+                tab.setAttribute("tabindex", "-1");
+                panel?.classList.add("d-none");
             }
         }
     }
